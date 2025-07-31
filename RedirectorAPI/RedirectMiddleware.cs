@@ -28,7 +28,7 @@ namespace RedirectorAPI.Middleware
 
             watcher.Changed += (s, e) =>
             {
-                Console.WriteLine("[INFO] redirect.json modificado, recargando...");
+                Console.WriteLine("[INFO] redirect.json modified, reloading...");
                 LoadRedirects();
             };
 
@@ -39,7 +39,7 @@ namespace RedirectorAPI.Middleware
         {
             if (!File.Exists(_jsonPath))
             {
-                Console.WriteLine("[INFO] redirect.json no existe. Creando archivo inicial...");
+                Console.WriteLine("[INFO] redirect.json not detected, creating file...");
 
                 var initial = new Dictionary<string, string>
                 {
@@ -53,6 +53,7 @@ namespace RedirectorAPI.Middleware
                 };
 
                 File.WriteAllText(_jsonPath, JsonConvert.SerializeObject(initial, Formatting.Indented));
+                Console.WriteLine("[INFO] redirect.json file created.");
             }
         }
 
@@ -64,11 +65,11 @@ namespace RedirectorAPI.Middleware
                 {
                     var json = File.ReadAllText(_jsonPath);
                     _redirects = JsonConvert.DeserializeObject<Dictionary<string, string>>(json) ?? new();
-                    Console.WriteLine("[INFO] Redirects actualizados.");
+                    Console.WriteLine("[INFO] Redirects updated.");
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"[ERROR] Fallo al leer redirect.json: {ex.Message}");
+                    Console.WriteLine($"[ERROR] Error on reading \"redirect.json\": {ex}");
                 }
             }
         }

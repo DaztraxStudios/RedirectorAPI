@@ -16,6 +16,7 @@ In the **`redirect.json`** file located in the root directory of the project, yo
   "/docs": "https://docs.microsoft.com"
 }
 ```
+NOTE: When launching the project for the first time, the `redirect.json` file will be generated automatically.
 
 ### Result (Request	// Redirects to):
 - `http://yourdomain.com/google` => `https://www.google.com`

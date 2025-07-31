@@ -43,13 +43,9 @@ namespace RedirectorAPI.Middleware
 
                 var initial = new Dictionary<string, string>
                 {
-                    { "/", "https://www.daztraxstudios.com" },
-                    { "/home", "https://www.daztraxstudios.com" },
-                    { "/lez", "https://lez.daztraxstudios.com" },
-                    { "/label", "https://label.daztraxstudios.com" },
-                    { "/dev", "https://dev.daztraxstudios.com" },
-                    { "/api", "https://dev.daztraxstudios.com" },
-                    { "/developer", "https://dev.daztraxstudios.com" },
+                    { "/", "https://www.example.com" },
+                    { "/google", "https://www.google.com" },
+                    { "/github", "https://github.com" }
                 };
 
                 File.WriteAllText(_jsonPath, JsonConvert.SerializeObject(initial, Formatting.Indented));

@@ -76,7 +76,7 @@ namespace RedirectorAPI.Middleware
 
         public async Task InvokeAsync(HttpContext context)
         {
-            var requestPath = context.Request.Path.ToString(); // Incluye "/"
+            var requestPath = context.Request.Path.ToString().ToLower(); // Includes "/"
 
             if (_redirects.TryGetValue(requestPath, out var targetUrl))
             {
